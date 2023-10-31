@@ -8,7 +8,7 @@ const DetalleBus = () => {
         <View style={styles.container}>
             <View style={styles.table}>
                 <View style={styles.row}>
-                    <Text style={styles.column}>Horario</Text>
+                    <Text style={styles.column}>Horarios</Text>
                     <Text style={styles.column}>08:00 AM a 09:00 PM</Text>
                 </View>
                 <View style={styles.row}>
