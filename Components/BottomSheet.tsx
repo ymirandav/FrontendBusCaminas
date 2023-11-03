@@ -52,7 +52,7 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
         </TouchableOpacity>
         </Link>
 
-        <Link href={'/(Modal)/CustomerSupport'} asChild>
+        {/* <Link href={'/(Modal)/CustomerSupport'} asChild>
         <TouchableOpacity>
           <View style={styles.item}>
             <Ionicons name="call-outline" size={20} color={Colors.blue} />
@@ -60,7 +60,7 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
             <Ionicons name="chevron-forward" size={20} color={Colors.blue} />
           </View>
         </TouchableOpacity>
-        </Link>
+        </Link> */}
 
         <TouchableOpacity style={styles.button} onPress={() => dismiss()}>
         <Ionicons name="arrow-down-outline" size={20} color={Colors.white} />
