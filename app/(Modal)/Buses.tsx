@@ -14,36 +14,42 @@ const Buses = () => {
       <Link href={'/(Modal)/DetalleBus'} asChild>
         <TouchableOpacity > 
           <View style={styles.item}>
-            <Image style={styles.bike} source={require('@/assets/images/transcayma.png')} />
-            <Text style={{ flex: 1, fontSize: 20}}>  TransCayma</Text>
+          <Image style={styles.bike} source={require('@/assets/images/cotumsb.png')} />
+            <Text style={{ flex: 1, fontSize: 20}}>  COTUM A</Text>
             <Ionicons name="information-circle-outline" size={30} color={Colors.blue} />
           </View>
         </TouchableOpacity>
       </Link>
 
+      <Link href={'/(Modal)/DetalleBus2'} asChild>
       <TouchableOpacity>
         <View style={[styles.item, { marginVertical: 10 }]}>
-          <Image style={styles.bike} source={require('@/assets/images/aqpMasivo.png')} />
-          <Text style={{ flex: 1, fontSize: 20 }}>  AqpMasivo</Text>
+          <Image style={styles.bike} source={require('@/assets/images/megabus.png')} />
+          <Text style={{ flex: 1, fontSize: 20 }}>  MegaBusAQP</Text>
           <Ionicons name="information-circle-outline" size={30} color={Colors.blue} />
         </View>
       </TouchableOpacity>
+      </Link>
 
+      <Link href={'/(Modal)/DetalleBus3'} asChild>
       <TouchableOpacity>
         <View style={styles.item}>
-          <Image style={styles.bike} source={require('@/assets/images/c9.png')} />
-          <Text style={{ flex: 1, fontSize: 20 }}>  3 de Octubre</Text>
+          <Image style={styles.bike} source={require('@/assets/images/cgrampo.png')} />
+          <Text style={{ flex: 1, fontSize: 20 }}>  C-Grampo</Text>
           <Ionicons name="information-circle-outline" size={30} color={Colors.blue} />
         </View>
       </TouchableOpacity>
+      </Link>
 
+      <Link href={'/(Modal)/DetalleBus4'} asChild>
       <TouchableOpacity>
         <View style={[styles.item, { marginVertical: 10 }]}>
-          <Image style={styles.bike} source={require('@/assets/images/unionaqp.png')} />
-          <Text style={{ flex: 1, fontSize: 20 }}>  Unión AQP</Text>
+          <Image style={styles.bike} source={require('@/assets/images/c9.png')} />
+          <Text style={{ flex: 1, fontSize: 20 }}>  COTASPA</Text>
           <Ionicons name="information-circle-outline" size={30} color={Colors.blue} />
         </View>
       </TouchableOpacity>
+      </Link>
     </View>
   );
 };

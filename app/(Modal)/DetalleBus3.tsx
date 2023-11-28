@@ -8,13 +8,13 @@ const DetalleBus = () => {
   const navigation = useNavigation();
 
   const origin = {
-    latitude: -16.386334513350477,
-    longitude: -71.57495602146196,
+    latitude: -16.426890262861,
+    longitude:  -71.60707640759757, 
   };
 
   const destination = {
-    latitude: -16.429201404273403,
-    longitude: -71.5341734687623,
+    latitude: -16.422281157493607,
+    longitude:  -71.54026921976525
   };
 
   const coordinates = [origin, destination];
@@ -32,19 +32,19 @@ const DetalleBus = () => {
 
   return (
     <View style={styles.container}>
-    <Text style={styles.title}>C.O.T.U.M</Text>
+    <Text style={styles.title}>C-GRAMPO</Text>
       <View style={styles.table}>
         <View style={styles.row}>
           <Text style={styles.column}>Horarios</Text>
-          <Text style={styles.column}>06:00 AM a 10:00 PM</Text>
+          <Text style={styles.column}>06:00 AM a 09:00 PM</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.column}>Inicio</Text>
-          <Text style={styles.column}>Transportes Hagemsa</Text>
+          <Text style={styles.column}>Terminal Megabus AQP S.A.C. (Pampas Nuevas)</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.column}>Fin</Text>
-          <Text style={styles.column}>Cementerio La Apacheta</Text>
+          <Text style={styles.column}>Gratersa</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.column}>Precio</Text>
@@ -83,7 +83,7 @@ const DetalleBus = () => {
         }}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text>TERMINAL AA.HH. ARTEMPA CALLE 8 LT. 20 MZ. B - AV LIMA(AH SEMI RURAL PACHACUTEC) - CL 02 DE MAYO - AV PERU(AH SEMI RURAL PACHACUTEC) - AV MIGUEL GRAU(AH SEMI RURAL PACHACUTEC) - AV LIMA(AH SEMI RURAL PACHACUTEC) - VIA DE EVITAMIENTO - CA VARIANTE DE UCHUMAYO(AH SEMI RURAL PACHACUTEC) - AV JOSE SANTOS ATAHUALPA(AH JOSE SANTOS ATAHUALPA) - PR BUENOS AIRES(AH JOSE SANTOS ATAHUALPA) - JR MANTARO(AH JOSE SANTOS ATAHUALPA) - JR PUNO(AH JOSE SANTOS ATAHUALPA) - CL CONFRATERNIDAD(AH JOSE SANTOS ATAHUALPA) - CL MANUEL GONZALES PRADA(AH MARISCAL CASTILLA) - AV GARCILAZO DE LA VEGA(AH MARISCAL CASTILLA) - CL LIBERTAD(AH MARISCAL CASTILLA) - VILLA SAN JUAN(URB VILLA SAN JUAN) - CL LOS CLAVELES(AH PACHACUTEC ) - AV LIMA(AH SEMI RURAL PACHACUTEC) - CL CHALLAPAMPA(AH 12 DE OCTUBRE) - MZ H, E, F, A(AH 12 DE OCTUBRE) - PJ SAN JOSE(AH CERRITO LOS ALVAREZ) - PR AV. EJERCITO - CL LOS ARCES(URB LOS ARCES) - AV TRINIDAD MORAN(URB LOS ARCES) - J. A. QUIÑONES(AS JOSE ABELARDO QUIÑONES) - CL CHULLO(URB ENTEL) - AV ZAMACOLA(URB LOS CEDROS) - AV EMMEL - AV RICARDO PALMA(URB UMACOLLO) - CL MARIA NIEVES Y BUSTAMANTE(URB UMACOLLO) - PT SAN MARTIN - OV VALLECITO(URB VALLECITO) - AV ANDRES MARTINEZ(URB VALLECITO) - PQ MELGAR(URB MARIA ISABEL) - AV TACNA Y ARICA(URB MARIA ISABEL) - AV SALAVERRY(URB MARIA ISABEL) - MA SOCABAYA - AV DANIEL ALCIDES CARRION(URB PABLO VI) - OV ANDRES AVELINO CACERES - AV LIMA(AH SEMI RURAL PACHACUTEC).</Text>
+            <Text>Terminal Megabus AQP S.A.C. (Antes Empresa de Transportes N&C Tiabaya S.A.). – Pampas Nuevas – Av. Víctor A. Belaunde – Ca. S/N – (Alt. Parque Miguel Grau) – Av. Arequipa – Ca. Atahualpa – Ca. Ballón – Av. Panamericana – Av. Arancota – Puente Tingo – Av. Alfonso Ugarte – Av. Miguel Forga – Av. Los Incas – Ca. Zegarra Ballón.</Text>
             <TouchableOpacity onPress={() => setRutaIdaModalVisible(false)}>
                 <Text style={styles.cerrarText}>CERRAR</Text>
             </TouchableOpacity>
@@ -100,7 +100,7 @@ const DetalleBus = () => {
         }}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text>OV ANDRES AVELINO CACERES - AV CEMENTERIO(URB VILLA ELECTRICA) - AV ESTADOS UNIDOS(URB SATELITE) - AV HARTLEY - AV PIZARRO - AV PORONGOCHE - CL JOSE CARLOS MARIATEGUI - AV JOHN F. KENNEDY - AV JESUS - AV LIMA - AV MARISCAL CASTILLA - AV MANUEL MUÑOZ NAJAR - AV LA PAZ - CL DON BOSCO - PR AYACUCHO( CERCADO) - CL AYACUCHO( CERCADO) - PT GRAU( CERCADO) - AV EJERCITO - PJ SAN JOSE(AH CERRITO LOS ALVAREZ) - AV CHACHANI(AH CERRITO LOS ALVAREZ) - LAS MALVINAS - CL CHALLAPAMPA(AH 12 DE OCTUBRE) - AV LIMA(AH SEMI RURAL PACHACUTEC) - CL 4 DE FEBRERO(AH PACHACUTEC ) - CL CLAVELES(AH PACHACUTEC ) - VILLA SAN JUAN(URB VILLA SAN JUAN) - CL LIBERTAD(AH MARISCAL CASTILLA) - AV GARCILAZO DE LA VEGA(AH MARISCAL CASTILLA) - CL MANUEL GONZALES PRADA(AH MARISCAL CASTILLA) - CL CONFRATERNIDAD(AH JOSE SANTOS ATAHUALPA) - JR PUNO(AH JOSE SANTOS ATAHUALPA) - JR MANTARO(AH JOSE SANTOS ATAHUALPA) - PR BUENOS AIRES(AH JOSE SANTOS ATAHUALPA) - AV JOSE SANTOS ATAHUALPA(AH JOSE SANTOS ATAHUALPA) - CA VARIANTE DE UCHUMAYO(AH SEMI RURAL PACHACUTEC) - VIA DE EVITAMIENTO - AV LIMA(AH SEMI RURAL PACHACUTEC) - AV MIGUEL GRAU(AH SEMI RURAL PACHACUTEC) - AV PERU(AH SEMI RURAL PACHACUTEC) - CL 02 DE MAYO - AV LIMA(AH SEMI RURAL PACHACUTEC) - TERMINAL AA.HH. ARTEMPA CALLE 8 LT. 20 MZ. B.</Text>
+            <Text>Av. Andrés A. Cáceres – Av. Miguel Forga – Psje. San Isidro – Av. Parra – Av. Alfonso Ugarte – Av. Alfonso Ugarte – Puente Tingo – Av. Arancota – Av. Panamericana – Av. Arequipa – Parque Miguel Grau – Av. Víctor A. Belaunde – Pampas Nuevas – Terminal Megabus AQP S.A.C. (Antes Empresa de Transportes N&C Tiabaya S.A.).</Text>
             <TouchableOpacity onPress={() => setRutaVueltaModalVisible(false)}>
               <Text style={styles.cerrarText}>CERRAR</Text>
             </TouchableOpacity>
