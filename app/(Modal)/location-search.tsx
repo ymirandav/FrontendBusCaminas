@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import Colors from '@/constants/Colors';
 import { useNavigation } from 'expo-router';
@@ -9,18 +9,27 @@ import { Ionicons } from '@expo/vector-icons';
 
 const LocationSearch = () => {
   const navigation = useNavigation();
-  const [origin, setOrigin] = useState({
+
+  const [location, setLocation] = useState({
     latitude: -16.423399904631825,
     longitude: -71.55657756931967,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
-  const [destination, setDestination] = useState({
-    latitude: -16.423399904631825,
-    longitude: -71.55657756931967,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  });
+
+  const [origin, setOrigin] = useState<null | {
+    latitude: number;
+    longitude: number;
+    latitudeDelta: number;
+    longitudeDelta: number;
+  }>(null);
+
+  const [destination, setDestination] = useState<null | {
+    latitude: number;
+    longitude: number;
+    latitudeDelta: number;
+    longitudeDelta: number;
+  }>(null);
 
   const mapRef = useRef<MapView | null>(null);
 
@@ -67,6 +76,29 @@ const LocationSearch = () => {
     }
   };
 
+  // Actualiza la región del mapa al cambiar el origen o el destino
+  useEffect(() => {
+    if (origin) {
+      mapRef.current?.animateToRegion({
+        latitude: origin.latitude,
+        longitude: origin.longitude,
+        latitudeDelta: origin.latitudeDelta,
+        longitudeDelta: origin.longitudeDelta,
+      });
+    }
+  }, [origin]);
+
+  useEffect(() => {
+    if (destination) {
+      mapRef.current?.animateToRegion({
+        latitude: destination.latitude,
+        longitude: destination.longitude,
+        latitudeDelta: destination.latitudeDelta,
+        longitudeDelta: destination.longitudeDelta,
+      });
+    }
+  }, [destination]);
+
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.searchContainer}>
@@ -75,7 +107,10 @@ const LocationSearch = () => {
             placeholder='Origen'
             styles={{
               container: {
-                flex: 0,
+                position: 'absolute', // Hace que el componente se superponga
+                left: 0,
+                right: 0,
+                zIndex: 1, // Asegura que el componente esté sobre otros elementos
               },
               textInput: {
                 fontSize: 18,
@@ -98,7 +133,10 @@ const LocationSearch = () => {
             placeholder='Destino'
             styles={{
               container: {
-                flex: 0,
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                zIndex: 1,
               },
               textInput: {
                 fontSize: 18,
@@ -122,14 +160,12 @@ const LocationSearch = () => {
         ref={(map) => (mapRef.current = map)}
         showsUserLocation={true}
         style={styles.map}
-        region={origin}>
-        <Marker coordinate={origin} pinColor="blue" />
-        <Marker coordinate={destination} pinColor="red" />
-        <Polyline
-          coordinates={[origin, destination]}
-          strokeColor="green"
-          strokeWidth={4}
-        />
+        region={location}>
+        {origin && <Marker coordinate={origin} pinColor="blue" />}
+        {destination && <Marker coordinate={destination} pinColor="red" />}
+        {origin && destination && (
+          <Polyline coordinates={[origin, destination]} strokeColor="purple" strokeWidth={4} />
+        )}
       </MapView>
 
       <View style={styles.busRoutesContainer}>
@@ -161,7 +197,7 @@ const styles = StyleSheet.create({
   },
   absoluteBox: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 0,
     width: '100%',
   },
   button: {
@@ -177,17 +213,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   searchContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
+    flexDirection: 'column',
+    // width: 390,
+    height: 100,
+    // display: 'flex',
+
+    paddingHorizontal: 20,
     marginTop: 8,
   },
   searchBox: {
     flex: 1,
-    marginRight: 8,
+    marginRight: 0,
   },
   busRoutesContainer: {
-    flex: 1,
+    flex: 0.5,
     padding: 16,
     borderTopWidth: 1,
     borderTopColor: '#ccc',

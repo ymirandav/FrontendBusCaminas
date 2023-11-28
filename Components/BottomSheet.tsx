@@ -33,37 +33,37 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
         </Link>
 
         <Link href={'/(Modal)/Config'} asChild>
-        <TouchableOpacity>
-          <View style={styles.item}>
-            <Ionicons name="settings-outline" size={20} color={Colors.blue} />
-            <Text style={{ flex: 1 }}>Configuración</Text>
-            <Ionicons name="chevron-forward" size={20} color={Colors.blue} />
-          </View>
-        </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.item}>
+              <Ionicons name="settings-outline" size={20} color={Colors.blue} />
+              <Text style={{ flex: 1 }}>Configuración</Text>
+              <Ionicons name="chevron-forward" size={20} color={Colors.blue} />
+            </View>
+          </TouchableOpacity>
         </Link>
 
         <Link href={'/(Modal)/TripHistory'} asChild>
-        <TouchableOpacity>
-          <View style={styles.item}>
-            <Ionicons name="reader-outline" size={20} color={Colors.blue} />
-            <Text style={{ flex: 1 }}>Historial</Text>
-            <Ionicons name="chevron-forward" size={20} color={Colors.blue} />
-          </View>
-        </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.item}>
+              <Ionicons name="reader-outline" size={20} color={Colors.blue} />
+              <Text style={{ flex: 1 }}>Historial</Text>
+              <Ionicons name="chevron-forward" size={20} color={Colors.blue} />
+            </View>
+          </TouchableOpacity>
         </Link>
 
         <Link href={'/(Modal)/CustomerSupport'} asChild>
-        <TouchableOpacity>
-          <View style={styles.item}>
-            <Ionicons name="call-outline" size={20} color={Colors.blue} />
-            <Text style={{ flex: 1 }}>Atención al cliente</Text>
-            <Ionicons name="chevron-forward" size={20} color={Colors.blue} />
-          </View>
-        </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.item}>
+              <Ionicons name="call-outline" size={20} color={Colors.blue} />
+              <Text style={{ flex: 1 }}>Atención al cliente</Text>
+              <Ionicons name="chevron-forward" size={20} color={Colors.blue} />
+            </View>
+          </TouchableOpacity>
         </Link>
 
         <TouchableOpacity style={styles.button} onPress={() => dismiss()}>
-        <Ionicons name="arrow-down-outline" size={20} color={Colors.white} />
+          <Ionicons name="arrow-down-outline" size={20} color={Colors.white} />
         </TouchableOpacity>
       </View>
     </BottomSheetModal>

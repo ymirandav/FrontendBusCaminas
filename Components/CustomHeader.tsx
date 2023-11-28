@@ -11,27 +11,12 @@ import MapView from 'react-native-maps';
 const SearchBar = () => (
   <View style={styles.searchContainer}>
     <View style={styles.searchSection}>
-
-        <Link href={'/(Modal)/location-search'} asChild>
+        <Link href={'/(Modal)/location-search'} asChild >
           <TouchableOpacity style={styles.button}> 
               <Ionicons style={styles.searchIcon} name="bus-outline" size={20} color={Colors.white} />
-              <Text style={{ flex:10, color: 'white' }}>Origen</Text>
+              <Text style={{ flex:10, color: 'white', fontSize: 18, textAlign: 'center' }}>Búsqueda</Text>
           </TouchableOpacity>
         </Link>
-        
-        <Link href={'/(Modal)/location-search'} asChild>
-          <TouchableOpacity style={styles.button}>
-            <Ionicons style={styles.searchIcon} name="location-outline" size={20} color={Colors.white} />
-            <Text style={{ flex:10, color: 'white' }}>Destino</Text>
-            </TouchableOpacity>
-        </Link>
-      
-    </View>
-    
-    <View style={styles.searchButton}>
-      <TouchableOpacity style={styles.button2}>
-        <Ionicons name="search-outline" size={20} color={Colors.white} />
-      </TouchableOpacity>
     </View>
   </View>
 );
@@ -75,9 +60,11 @@ const CustomHeader = () => {
 
         </View>
         <SearchBar />
-        <View style={{ height: 1000 }}>
+        {/* <View style={{ height: 1000 }}>
           <MapView style={styles.map} region={location} />
-        </View>
+        </View> */}
+
+        <Image source={require('../assets/images/logo2.jpg')} style={styles.image} />
         
     </SafeAreaView>
     
@@ -85,6 +72,13 @@ const CustomHeader = () => {
 };
 
 const styles = StyleSheet.create({
+  image: {
+    resizeMode: 'cover',
+    // width: 395,
+    // height: 600
+    width: 400,
+    height: 600
+  },
   safeArea: {
     flex: 1,
     backgroundColor: '#fff',
@@ -99,18 +93,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   button: {
-    paddingLeft:34,
+    // paddingLeft:23,
     backgroundColor: Colors.blue,
     padding: 12,
-    margin: 1,
+    margin: 10,
     borderRadius: 15,
     alignItems: 'center',
-    width: '48.5%',
+    width: '60%',
     alignSelf: 'center',
     flexDirection: 'row',
-    justifyContent: 'center',
-    
-
+    justifyContent: 'center'
   },
   button2: {
     backgroundColor: Colors.medium,
@@ -158,6 +150,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 40,
     alignItems: 'center',
+    position:'relative',
+    paddingLeft: 120
   },
   searchField: {
     flex: 1,
@@ -172,8 +166,7 @@ const styles = StyleSheet.create({
     color: Colors.mediumDark,
   },
   searchIcon: {
-    paddingLeft: 10,
-    
+    paddingLeft: 7,  
   },
   optionButton: {
     padding: 10,
