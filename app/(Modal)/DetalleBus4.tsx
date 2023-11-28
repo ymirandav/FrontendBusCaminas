@@ -67,10 +67,10 @@ const DetalleBus = () => {
 
       <View style={styles.botonesContainer}>
         <TouchableOpacity style={[styles.boton, styles.primerBoton]} onPress={handleRutaIdaPress}>
-          <Text>RUTA IDA</Text>
+          <Text style={styles.textoBoton}>RUTA IDA</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.boton, styles.segundoBoton]} onPress={handleRutaVueltaPress}>
-          <Text>RUTA VUELTA</Text>
+          <Text style={styles.textoBoton}>RUTA VUELTA</Text>  
         </TouchableOpacity>
       </View>
 
@@ -125,6 +125,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
   },
+  textoBoton: {
+    color: 'white',
+  },
   table: {
     borderWidth: 1,
     borderColor: 'black',
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   boton: {
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.blue,
     padding: 10,
     borderRadius: 5,
   },
