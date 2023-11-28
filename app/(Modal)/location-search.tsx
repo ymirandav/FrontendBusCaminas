@@ -9,6 +9,11 @@ import { Ionicons } from '@expo/vector-icons';
 
 const LocationSearch = () => {
   const navigation = useNavigation();
+  
+  
+  const [selectedOrigin, setSelectedOrigin] = useState<null | string>(null);
+  const [selectedDestination, setSelectedDestination] = useState<null | string>(null);
+
 
   const [location, setLocation] = useState({
     latitude: -16.423399904631825,
@@ -33,12 +38,6 @@ const LocationSearch = () => {
 
   const mapRef = useRef<MapView | null>(null);
 
-  const [busRoutes, setBusRoutes] = useState([
-    { id: '1', name: 'Bus 101', origin: 'Terminal A', destination: 'Station X' },
-    { id: '2', name: 'Bus 202', origin: 'Station B', destination: 'Station Y' },
-    // Agrega más rutas de autobús según sea necesario
-  ]);
-
   const handleOriginSelect = (data: GooglePlaceData, details: GooglePlaceDetail | null) => {
     if (details && details.geometry && details.geometry.location) {
       const { lat, lng } = details.geometry.location;
@@ -48,10 +47,13 @@ const LocationSearch = () => {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       });
+      setSelectedOrigin(data.description); // Guarda el nombre del origen      
       zoomToLocation(lat, lng);
+      console.log("lat ori: " + lat);
+      console.log("lng ori: " + lng);
     }
   };
-
+  
   const handleDestinationSelect = (data: GooglePlaceData, details: GooglePlaceDetail | null) => {
     if (details && details.geometry && details.geometry.location) {
       const { lat, lng } = details.geometry.location;
@@ -61,9 +63,25 @@ const LocationSearch = () => {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       });
+      setSelectedDestination(data.description); // Guarda el nombre del destino
       zoomToLocation(lat, lng);
+      console.log("lat des: " + lat);
+      console.log("lng des: " + lng);
     }
   };
+
+  // useEffect(() => {
+  //   console.log("Origen:", selectedOrigin);
+  // }, [selectedOrigin]);
+  
+  // useEffect(() => {
+  //   console.log("Destino:", selectedDestination);
+  // }, [selectedDestination]);
+
+  const [busRoutes, setBusRoutes] = useState([
+    { id: '1', name: 'Arias 13', origin: selectedOrigin, destination: selectedDestination },
+    
+  ]);
 
   const zoomToLocation = (latitude: number, longitude: number) => {
     if (mapRef.current) {
@@ -168,19 +186,77 @@ const LocationSearch = () => {
         )}
       </MapView>
 
-      <View style={styles.busRoutesContainer}>
-        <Text style={styles.busRoutesTitle}>Rutas de Autobús</Text>
-        <FlatList
-          data={busRoutes}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.busRouteItem}>
-              <Text style={styles.busRouteName}>{item.name}</Text>
-              <Text>{`${item.origin} - ${item.destination}`}</Text>
-            </View>
-          )}
-        />
-      </View>
+      {selectedOrigin && selectedDestination && (
+        <View style={styles.busRoutesContainer}>
+          <Text style={styles.busRoutesTitle}>Puedes tomar los siguientes autobuses:</Text>
+          <FlatList
+            data={busRoutes}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => {
+              const arias13Coords = {
+                origin: { latitude: -16.4083849, longitude: -71.5422737 },
+                destination: { latitude: -16.42432609999999, longitude: -71.55666339999999 },
+              };
+
+              const arias33Coords = {
+                origin: { latitude: -16.42432609999999, longitude: -71.55666339999999 },
+                destination: { latitude: -16.4083849, longitude: -71.5422737 },
+              };
+
+              const CGRAMPOCoords = {
+                origin: { latitude: -16.42770209999999, longitude: -71.5168211 },
+                destination: { latitude: -16.4034579,  longitude: -71.5484707 },
+              };
+
+              const originCoords = {
+                latitude: origin?.latitude || 0,
+                longitude: origin?.longitude || 0,
+              };
+
+              const destinationCoords = {
+                latitude: destination?.latitude || 0,
+                longitude: destination?.longitude || 0,
+              };
+
+              let busesToShow: string[] = [];
+
+              if (
+                JSON.stringify(originCoords) === JSON.stringify(arias13Coords.origin) &&
+                JSON.stringify(destinationCoords) === JSON.stringify(arias13Coords.destination)
+              ) {
+                busesToShow.push('Arias 13');
+                busesToShow.push('Segrampo');
+              }
+
+              if (
+                JSON.stringify(originCoords) === JSON.stringify(arias33Coords.origin) &&
+                JSON.stringify(destinationCoords) === JSON.stringify(arias33Coords.destination)
+              ) {
+                busesToShow.push('Arias 33');
+                busesToShow.push('COTUM');
+              }
+
+              if (
+                JSON.stringify(originCoords) === JSON.stringify(CGRAMPOCoords.origin) &&
+                JSON.stringify(destinationCoords) === JSON.stringify(CGRAMPOCoords.destination)
+              ) {
+                busesToShow.push('C-GRAMPO');
+                busesToShow.push('COTUM');
+              }
+
+              return busesToShow.length > 0 ? (
+                <View style={styles.busRouteItem}>
+                  {busesToShow.map((bus) => (
+                    <Text style={styles.busRouteName} key={bus}>
+                      + {bus}
+                    </Text>
+                  ))}
+                </View>
+              ) : null;
+            }}
+          />
+        </View>
+      )}
 
       <View style={styles.absoluteBox}>
         <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
@@ -241,7 +317,7 @@ const styles = StyleSheet.create({
   },
   busRouteName: {
     fontSize: 16,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
 });
 
